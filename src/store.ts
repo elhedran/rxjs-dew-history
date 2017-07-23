@@ -61,7 +61,7 @@ const listenToHistory = (history: History): Observable<CompleteAction> => {
 };
 
 const createSoak = (history: History): Dew.Soak<Location, any> =>
-    (state, action) => isCompleteAction(action) ? action.location : undefined;
+    (state, action) => isCompleteAction(action) ? action.location : state;
 const createFlow = (history: History): Dew.Flow<any> =>
     (in$) => {
         in$.filter(isAction)
