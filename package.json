@@ -1,16 +1,16 @@
 {
     "name": "rxjs-dew-history",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "description": "History bindings for rxjs-dew",
-    "main": "lib/index.js",
-    "typings": "lib/index",
+    "main": "js/dist/index.js",
+    "typings": "js/dist/index",
     "readme": "README.md",
-    "files": [
-        "/lib"
-    ],
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc"
+        "clean_cjs": "shx rm -rf js/dist",
+        "generate_package": "node .make-package.js",
+        "test": "npm-run-all clean_cjs compile_cjs generate_package",
+        "compile_cjs": "tsc",
+        "build": "npm run compile_cjs"
     },
     "repository": {
         "type": "git",
@@ -28,13 +28,19 @@
     },
     "homepage": "https://github.com/elhedran/rxjs-dew-history#readme",
     "devDependencies": {
+        "@types/history": "^4.6.0",
+        "mkdirp": "^0.5.1",
+        "npm-run-all": "^4.1.1",
+        "shx": "^0.2.2",
         "tslint": "^5.4.3",
         "typescript": "2.3.4"
     },
     "dependencies": {
-        "@types/history": "^4.6.0",
         "history": "^4.6.3",
         "rxjs": "^5.4.2",
         "rxjs-dew": "^0.6.0"
+    },
+    "peerDependencies": {
+        "@types/history": "^4.6.0"
     }
 }
